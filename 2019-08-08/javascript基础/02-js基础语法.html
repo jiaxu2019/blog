@@ -30,8 +30,36 @@
     // ====================
     // 3. javascript的语句
     // 赋值语句
-    var a=123;
-    console.log(a);
+    var x = 123;
+    var y = "3333";
+    var c = "falsh";
+    var usename = [];
+
+    // 变量都是通过var关键字
+
+    console.log(x);
+
+    //先声明变量后进行赋值
+    var t;
+    t = 8 * 9;
+    console.log("8 * 9=" + t)
+
+    t = "字符串";
+    console.log(t);
+
+
+    // 定义多个变量
+    var a1,a2,a3,a4; //声明了4个变量（局部变量）
+    a1 = 1;
+    a2 ="sss";
+
+
+    var b1 = 1,      //声明变量，顺便给变量赋值
+        b2 = 2,
+        b3 = "nihao";
+
+    // 绝对不推荐的一种
+    var c1 = c2 = c3 = c4 =0;  //定义了一个c1 局部变量.c2 c3 c4就成了一个全局变量（很重要）
     </script>
 </body>
 </html>
