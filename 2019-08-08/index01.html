@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        .container{
-            width: 500px;
-            height: 500px;
-            margin: 100px auto;
-        }
-        form{
-            width: 100%;
-            height: 42px;
-            top: 4px;
-            position: relative;
-        }
-    </style>
+    <title>自动添加li</title>
+    <!-- <link rel="stylesheet" href="./index01.css"> -->
 </head>
 <body>
-    <div class="container">
-        <form>
-            <input type="text">
-            <input type="button" value="搜索">
-        </form>
-    </div>
+    <!-- <div class="container">
+        <form action="" class="parent">
+            <input type="text"> -->
+    <input type="button" value="添加" id="btnAdd">
+        <!-- </form>
+    </div> -->
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+         var btnAdd = document.querySelector('#btnAdd');
+         var index =4;
+         btnAdd.addEventListener('click',function(){
+             var list = document.querySelector('.list');
+             list.innerHTML += "<li>" + index + "</li>";
+             index++;
+         });
+
+    </script>
 </body>
 </html>

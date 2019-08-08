@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    width: 500px;
+    height: 50px;
+    margin: 100px auto;
+}
+.parent{
+    width: 100%;
+    height: 42px;
+    top: 4px;
+    position: relative;
+}
+.parent input:first-of-type{
+    width: 380px;
+    height: 40px;
+    border: 2px solid pink;
+    font-size: 16px;
+    outline: none;
+}
+.parent input:last-of-type{
+    width: 100px;
+    height: 44px;
+    position: absolute;
+    background: #3171f3;
+    border: 1px solid #3171f3;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+}
