@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js数组</title>
+</head>
+<body>
+    <p>点击按钮检测数组中是否有元素大于输入框中输入的数字</p>
+    <p>最小年龄：<input type="number" id="ageToCheck" value="18"></p>
+    <button onclick="myFunction()">点我</button>
+    <p>判断结果：<span id="demo"></span></p>
+
+    <!-- <p>点击按钮检测数组中是否有元素大于18.</p>
+    <button onclick="myFunction()">点我</button>
+    <p id="demo"></p> -->
+
+    <!-- <p>最小年龄:<input type="number" id="ageToCheak" value="18"></input></p>
+    <button onclick="myFunction()">点我</button>
+    <p>是否所有年龄都符合条件呢？<span id="demo"></span></p> -->
+
+
+    <!-- <p>点击按钮检测数组的所有元素是否都大于18：</p>
+    <button onclick="myFunction()">点我</button>
+    <p id="demo"></p> -->
+    <!-- <p>点击按钮获取数组中大于18的所有元素</p>
+    <button onclick="myFunction()">点击我哦</button>
+    <p id="demo"></p> -->
+
+  <!-- <p>乘以：<input type="number" id="multiplyWith" value="10"></p>
+  <button onclick="numbers.forEach(myFunction)">点我</button>
+  <p>计算后的值:<span id="demo"></span></p> -->
+    <!-- <P>点击按钮列出数组的每个元素。</P>
+    <button onclick="numbers.forEach(myFunction)">点我</button>
+    <p id="demo"></p> -->
+    <script>
+    //   概念
+    //   数组就是一个存储数据的一个容器 一般存储一组数据类似[1,2,3,4] ['姓名','年龄','性别']
+
+    //   定义数组
+    //   1.第一种定义
+    //     var arr = [1,3,4,6]
+
+    //   2.第二种定义
+    //     var arr2 = new Array(1,3,5)
+
+    // 常用的api方法
+    // 添加
+   // 1.push 返回当前数组长度 往数组最后一个位置插入元素
+
+    // var arr = [1]
+    // arr.push("test")
+    // console.log(arr);
+    //  [1,'test']   test在后面
+  //  2.unshift 返回当前数组长度 往数组第一个位置插入元素
+
+    // var arr = [10]
+    // arr.unshift(90)
+    // console.log(arr);
+    // [90,10]    90在前面
+    
+    // 3.splice(删除)传入两个参数就是删除
+    // var arr = [1,2,3,4,5,6]
+    // arr.splice(3,1) 
+    //  ==> 3 表示下标从0开始 1代表长度
+    // console.log(arr);
+    // print [1,2,3,5,6]
+
+    // 4.pop 把最后一个元素删除了 返回删除的元素
+    // var arr = [1,2,3,4,7,6];
+    // arr.pop()
+    // console.log(arr);
+    // print [1,2,3,4,7]把最后一个元素删除了 返回删除的元素
+
+    // 5.splice(修改) 传入三个参数以上就是修改或插入
+    //  var arr = [1,2,3,4,5,6]
+    //  arr.splice(1,1,0,1)
+    // 第一个参数删除的下标 第二个删除的长度 第三个插入的元素 第四个插入的元素
+    //  console.log(arr)
+    // print [1,0,1,3,4,5,6]
+
+      //  查找|遍历
+      //  for (var i = 0;i<10;i++){
+      //    console.log(i)
+      //  }
+      //    document.write(i);
+      //   array.forEach(function(it,index,arr){
+      //     console.log(it,'it')
+      //     console.log(index,'index')
+      //     console.log(arr,'arr')
+      //   });
+
+        // var numbers = [1,2,3,4,5,68,88,999,11111];
+        // array.forEach(function(it,index,arr){
+        //   console.log(it,'it')
+        //   console.log(index,'index')
+        //   console.log(arr,'arr')
+        // });
+        // it当前元素  index当前元素下标  arr原数组
+        // print
+        // 1  "it"
+        // 0  "index"
+        // [1,2,3,4]  "arr"
+        // 1.实例  列出数组的每个元素：
+        // demoP = document.getElementById("demo");
+        // var numbers = [1,3,6,9,33,3334,55,6,8,9,0];
+
+        // function myFunction(item,index){
+        //   demoP.innerHTML = demoP.innerHTML + "index [" + index + "]: " + item +"<br>";
+        // }
+        //    2.计算数组所有元素相加的总和：
+        // var sum = 0;
+        // var numbers = [66,44,12,6,7];
+        // function myFunction(item){
+        //   sum += item;
+        //   demo.innerHTML = sum;
+        // }
+
+        //       // 3.将数组中的所有值乘以特定的值：
+        // var numbers = [65,33,55,77,3];
+        // function myFunction(item,index,arr){
+        //   arr[index] = item * document.getElementById("multiplyWith").value;
+        //   demo.innerHTML = numbers
+        // }
+
+        // filter数组过滤
+        // var arr = [1,2,3,100,1100,300,400,1000,5000];
+        // function cheakAdult(age){
+        //   return age >10 && age % 100 == 0;
+        // }
+        // function myFunction(){
+        //   document.getElementById("demo").innerHTML = arr.filter(cheakAdult);
+        // }
+
+        // every 检查数组中每个元素都满足这个条件
+        // every()方法用于检测数组所有元素是否都符合指定条件(通过函数提供)。
+        // every()方法使用指定函数检测数组中所有的元素。
+        //   .  如果数组中检测到有一个元素不满足，则整个表达式返回false，且剩余元素不会再进行检测。
+        //   .  如果所有元素都满足条件，则返回true。
+        //   注意:every不会对空数组进行检测。
+        //   注意:every不会改变原数组
+        // var ages = [22,18,44,55,87];
+        // function checkAdult(age){
+        //   return age >= 18;
+        // }
+        // function myFunction(){
+        //   document.getElementById("demo").innerHTML = ages.every(checkAdult);
+        // }
+
+        // var ages = [22,33,55,33,88];
+        // 检测数组ages的所有元素是否都大于等于输入框中指定数字：
+        // function cheakAdult(age){
+        //   return age >= document.getElementById("ageToCheak").value;
+        // }
+        // function myFunction(){
+        //   document.getElementById("demo").innerHTML = ages.every(cheakAdult);
+        // }
+    
+        // var ages = [2,4,13,1,6,28,22,44,66];
+        // some定义和方法
+        // some()方法会依次执行数组中的每个元素:
+        //   .  如果有一个元素满足条件，则表达式返回true，剩余的元素不会在执行检测。
+        //   .  如果没有满足条件的元素，则返回false。
+        // 注意：some()不会对空数组进行检测。
+        // 注意：some()不会改变原始数组。
+        // function checkAdult(age){
+        //   return age >= 18;
+        // }
+        // function myFunction(){
+        //   document.getElementById("demo").innerHTML = ages.some(checkAdult);
+        // }
+        var ages = [4,13,17,33];
+        function checkAdult(age){
+          return age >= document.getElementById("ageToCheck").value;
+        }
+        function myFunction(){
+          document.getElementById("demo").innerHTML = ages.some(checkAdult);
+        }
+
+        知识拓展 上述例子中，some调用了一个外部函数。
+        通过回调函数也可以实现该部分的功能，代码如下：
+        ==> function myFunction(){
+          document.getElementById("demo").innerHTML = ages.some(v => {
+            return v>document.getElementById("ageToCheck").value
+          })
+        }
+    </script>
+</body>
+</html>
