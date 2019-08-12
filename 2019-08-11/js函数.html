@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js函数</title>
+</head>
+<body>
+    函数概念
+      简单理解就是用来管理我们写的代码块，代码块主要包含（变量 if语句 for语句 
+    while语句 switch语句）等定义的每个函数都有自己的对立空间，同样的一段代
+    码，在不同的函数中即使名称一样也不会有影响。这就是函数的作用，用去管理我
+    们写的代码区间，而对象就是用来管理函数用的。
+
+    函数定义
+      .  函数分为函数名 函数体 形参 实参
+      .  函数名 即函数名称
+      .  函数体 就是函数执行的代码区域
+      .  形参 就是定义函数时声明需要传的参数
+      .  实参 就是调用的时候穿的参数
+    dome例子
+      function test(name,age){
+          ==> test是函数名
+          ==> name,age 函数体
+      }
+      test("rise",100,'gril')  ==>"rise",100,'gril' 这个是实参 实际传的参数可以这样理解
+      
+      函数分类
+       从参数角度来分 函数分为 有参函数和无参函数
+
+      有参函数 
+      function test(name,age){
+       console.log(name,name)
+       console.log(age,age)
+      }
+      test();
+       
+      无参函数
+      function test(){
+        alert()
+        // 代码块
+      }
+      test("rise",100)
+
+    从函数返回值角度来分 函数分为有返回值和无返回值
+
+    有返回值  有ruturn返回
+    function test(){
+        var x = 5;
+        return x ;
+    }
+    无返回值  无ruturn返回
+    function test(){
+        var x = 5
+    }
+
+    函数使用场景
+
+    1.普通函数
+    function test(){
+        alert()
+        // 代码块
+    }
+    test()
+    2.匿名函数（匿名函数就是没有函数名的函数）
+    这里定义方式是定义一个没有名称的函数赋值给一个变量
+    var fn = function(){
+        // 代码块
+    }
+    fn()
+
+    <!-- dom事件方法中使用匿名函数 -->
+    var dom = document.getElementById('app')
+    dom.onclick = function(){
+        // 代码块
+    }
+
+    对象中使用匿名函数
+    var obj = {
+        getMess:function(){
+            // 代码块
+        }
+    }
+
+    内置数组遍历方法中使用函数
+    var arr = [1,2,3]
+    arr.forEach((it,index,arr){
+        //  代码块
+    })
+</body>
+</html>
