@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象</title>
+</head>
+<body>
+    对象定义
+    描述Javascript引用数据类型的统称一切 皆为对象
+
+
+    类型
+      .  javascript中对象分为内置对象和自定义对象
+      .  内置对象 浏览器解析器为我们提供的对象
+      .  自定义对象 我们自己定义的对象
+
+    内置对象
+      Number  数字对象
+      Boolean  布尔对象
+      Object  定义对象
+      String  字符串对象
+      Date  日期对象
+      RegExp  正则对象
+      Error  错误对象
+      window  相当于global全局对象  由javascript提供
+
+      自定义对象
+        第一种定义new的方式定义
+        var t = new Test()
+        new t()
+
+        第二种定义  字面量定义
+        var obj = {}
+
+
+        关于function的理解
+          javascript中关于function可以说它是对象它又是函数，为什么会出现这种情况呢？
+          这个要从历史说起  因为javascript这个语言刚刚出来的时候 没有把对象和方法区
+        分 或者说是一开始出来的时候 没有对象的概念 后期做了拓展
+
+        可以这样子区分
+          如果直接调用了person()他就是方式 它的this指向是window
+          如果是new person()这种方式 它的this指向对象本身
+
+        首先定义了一个person
+          function person(){}
+
+        函数
+          function person(){
+              console.log(this)
+          }
+            // 调用
+        person()
+        // print
+        Window {postMessage: f,blur: f , focus:f,close:f,parent:Window,......}
+        对象
+        function person(){
+            console.log(this);
+        }
+        new person()
+        person{}
+</body>
+</html>
