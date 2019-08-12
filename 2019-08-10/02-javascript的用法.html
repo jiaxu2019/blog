@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js改变html内容</title>
+    <script>
+        function myFunction(){
+            document.getElementById("dome").innerHTML="我的第一个javascript函数";
+        }
+        //  head中的javascript中的函数
+    </script>
+</head>
+<body>
+      <!-- <h2>javascript能做什么</h2>
+      <p id="dome">javascript能改变HTML的内容</p>
+      <button type="button" onclick='document.getElementById("dome").innerHTML = "hello word!"' >点击我</button> -->
+
+      <h2>我的web页面</h2>
+      <p id="dome">一个段落</p>
+      <button type="button" onclick="myFunction()">点击这里</button>
+
+      <script>
+        function myFunction(){
+        document.getElementById("dome").innerHTML="我的第一个javascript函数";
+       }
+       // body中的javascript中的函数
+
+
+
+       //  注意细节  在标签中填写onclick事件调用函数时，不是onclick=函数名，而是onclick=函数名+(),代码如下：
+       //  外部 javascript 文件不使用 <script> 标签，直接写 javascript 代码.
+       //  HTML 输出流中使用 document.write，相当于添加在原有html代码中添加一串html代码。而如果在文档加载后使用（如使用函数），会覆盖整个文档
+       </script>
+      <!--<script src="myScript.js"></script>  外部的javascript--> 
+</body>
+</html>

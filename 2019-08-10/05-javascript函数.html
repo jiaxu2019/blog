@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript函数</title>
+    <script>
+      //  函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块；
+      //  javascript函数语法 函数就是包裹在花括号中的代码块，前面使用了关键词function;
+      //  当调用该函数时，会执行函数内的代码。
+      //  可以在某事件发生时直接调用函数（比如当用户点击按钮时），并且可由 JavaScript 在任何位置进行调用。
+      //  JavaScript 对大小写敏感。关键词 function 必须是小写的，并且必须以与函数名称相同的大小写来调用函数.
+      function myFunction(){
+          alert( "hello word" )
+      }
+    </script>
+</head>
+<body>
+    <!-- <button onclick="myFunction()">点击我</button> -->
+
+
+    <!-- <p>点击这个按钮，来调用带参数的函数</p>
+    <button onclick="myFunction('Harry Potter','Wizard')">点击我</button>
+    <button onclick="myFunction('Bob','teacher')">点击我</button>
+    <script>
+      function myFunction(name,job){
+          alert("welcome " + name + ",the " + job)
+      }
+    </script> -->
+    <p>本例题调用函数会执行一个计算，然后返回结果：</p>
+    <p id="dome"></p>
+    <script>
+      function myFunction(a,b){
+        return a * b;
+      }
+      document.getElementById("dome").innerHTML=myFunction(4,3);
+    </script>
+</body>
+</html>

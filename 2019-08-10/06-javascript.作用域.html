@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript作用域</title>
+</head>
+<body>
+    <p>局部变量在声明的函数外不可访问</p>
+    <p id="dome"></p>
+
+    <script>
+       myFunction();
+       document.getElementById("dome").innerHTML= "carName 的类型是："+ typeof carName;
+       function myFunction(){
+           var carName = "Volvo";
+       }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>检测js字符串长度</title>
+</head>
+<body>
+    <!-- <script>
+       var txt = "hello world!"
+       document.write("<p>" + txt.length + "</p>")
+       var ddd = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+       可以使用内置属性 length 来计算字符串的长度
+       document.write("<p>" + ddd.length + "</p>")
+    </script> -->
+    <p>点击按钮检测年龄</p>
+    年龄：<input id="age" value="18" />
+    <p>是否到达投票年龄？</p>
+    <button onclick="myFunction()">点击按钮</button>
+    <p id="dome"></p>
+
+    <script>
+      function myFunction(){
+        var age,voteable;
+        age = document.getElementById("age").value;
+        voteable=(age<18)?"年龄太小":"年龄已达到";
+        document.getElementById("dome").innerHTML=voteable;
+      }
+    </script>
+</body>
+</html>

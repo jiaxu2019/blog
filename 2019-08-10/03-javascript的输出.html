@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript的输出</title>
+</head>
+<body>
+    <h1>我的第一个页面</h1>
+    <p id="dome">我的第一个段落</p>
+    <script>
+    //  使用window.alert()
+    //  你可以弹出警告框来显示数据：
+    //  实例
+    window.alert(5 + 6)
+    //  操作 HTML 元素
+    //  如需从 JavaScript 访问某个 HTML 元素，您可以使用 document.getElementById(id) 方法。
+    //  请使用 "id" 属性来标识 HTML 元素，并 innerHTML 来获取或插入元素内容：
+    document.getElementById("dome").innerHTML = "段落已经修改";
+
+    var a = 3,
+        b = 4,
+        c = a + b;
+    //  写到控制台
+    console.log(c);
+    document.write(c);
+    </script>
+</body>
+</html>
