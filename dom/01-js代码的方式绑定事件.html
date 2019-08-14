@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>代码的方式绑定事件</title>
+</head>
+<body>
+    <div id="tm">
+      姚姚要照顾好自己啊，我会努力，我们一起加油
+    </div>
+    <script>
+        // 第一步拿到 要绑定事件的div
+      var d = document.querySelector('#tm');   //id选择器
+      d.onclick = function(){
+        // 在事件的响应方法中 this 指向当前事件源对象。
+          alert(this.innerHTML);
+      };
+
+        d.onclick = function(){
+            console.log(1);
+        };
+        // 这种绑定事件的方式，只能绑定一个方法。
+    </script>
+</body>
+</html>
