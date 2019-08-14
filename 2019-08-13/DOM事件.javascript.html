@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM级别</title>
+</head>
+<body>
+    <div onclick= "fn()" style="margin: 10px; border: 1px solid #ccc; padding: 10px;">hello word</div>
+    <script>
+    // DOM定义
+    // 中文意思是文档对象模型  定义是对文档节点提供的API接口
+
+    // DOM节点
+    // 查找
+    // Javascript选择器  class id 当前元素都可以使用
+    // document.querySelector
+
+    // 选中多个元素
+    // document.querySelectorAll
+    // 选中元素标签
+    // document.getElementsByTagName
+    // 选中input元素name
+    // document.getElementsByName
+    // 选中元素id
+    // document.getElementById
+    // 兄弟前一个节点
+    // el.previousSibling ==> 得到当前元素的前一个节点元素
+    // 兄弟后一个节点
+    // el.nextSibling ==> 得到当前元素后一个元素节点
+    // 创建 
+    // document.createElement
+    // 删除
+    // 删除当前元素
+    // document.remove
+    // 删除子元素  el->选中子元素
+    // document.removeChild(el)
+    // 插入
+    // 1. parent父元素  newEel要插入的元素  el作为参照物的元素
+    // (parent).insertBefore(newEl,el)
+    // 2.parent父元素  newEl要插入的元素  这种方式只能添加到子元素最后面位置
+    // (parent).append(newEl)
+    // 和2用法一样  append支持插入多个参数，且支持字符串
+    // (parent).appendChild(newEl)
+
+    // 替换
+    // parent父元素  newEl需要插入的元素  el需要被删除的的元素
+    // (parent).replaceChild(newEl)
+    // 复制
+    // el被克隆的元素  isTrue为true 包含子元素  false或不写只克隆最外层元素
+    // el.cloneNode(isTrue)
+
+
+    // DOM级别
+    // dom0级  直接在元素上放入一个事件
+    function fn(){
+        alert("ooo");
+    };
+    </script>
+</body>
+</html>
