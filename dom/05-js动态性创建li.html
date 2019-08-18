@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态创建li</title>
+    <style>
+      *{
+          padding: 0;
+          margin: 0;
+      }
+      .tudoulist{
+          /* text-align: center; */
+          padding: 30px 0;
+      }
+      form{
+          position: relative;
+          width: 600px;
+          margin: 0 auto;
+      }
+     input,button{
+          border: 0;
+          outline: 0;
+      }
+      input{
+          width: 450px;
+          height:42px; 
+          padding-left: 13px;
+          padding-right: 46px;
+          border: 2px solid #f99;
+          border-radius: 5px;
+          background: transparent;
+          top: 0;
+          right: 0;
+      }
+      button{
+          height: 42px;
+          width:70px;
+          cursor: pointer;
+          position: absolute;
+          background: blueviolet;
+          border-radius: 0 5px 5px 0;
+          top: 0;
+          right: 0;
+      }
+      ul li{
+          border : 1px solid #333;
+          width: 600px;
+          margin: 10px auto;
+      }
+    </style>
+</head>
+<body>
+    <div class="tudoulist">
+       <form>
+          <input type="text" placeholder="Username">
+          <button type="button" id="btnAdd">搜索</button>
+       </form>
+    </div>
+    <!-- <input type="button" value="点击" id="btnAdd"> -->
+    <ul class="list">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <script>
+      var btnAdd = document.querySelector('#btnAdd');
+      var index = 4;
+      btnAdd.addEventListener('click',function(){
+        var list = document.querySelector('.list');
+        list.innerHTML += "<li>" + "</li>";
+        index++;
+      });
+    </script>
+</body>
+</html>

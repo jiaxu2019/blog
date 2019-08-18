@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网页计算器</title>
+    <style>
+      *{
+          padding: 0;
+          margin: 0;
+      }
+      #panel{
+          width: 202px;
+          height: 252px;
+          margin: 30px auto;
+          border: 3px solid #ccc;
+      }
+      #screen{
+          width: 134px;
+          height: 40px;
+          margin: 5px;
+          display: inline-block;
+          border: 1px solid #ddd;
+          line-height: 40px;
+          padding-left: 3px;
+          padding-right: 3px;
+          text-align: center;
+      }
+      input[type="button"]{
+          width: 40px;
+          height: 40px;
+          border: 1px  solid #ddd;
+          margin: 5px;
+          font-family: "微软雅黑";
+          font-size: 18px;
+          font-weight: bold;
+      }
+      #panel div,p,input{
+          float: left;
+      }
+    </style>
+</head>
+<body>
+    <div id="panel">
+      <div>
+        <p id="screen"></p>
+        <input type="button" value="C">
+      </div>
+      <div>
+        <input type="button" value="7">
+        <input type="button" value="8">    
+        <input type="button" value="9">
+        <input type="button" value="/">
+        <input type="button" value="4">
+        <input type="button" value="5">
+        <input type="button" value="6">
+        <input type="button" value="*">
+        <input type="button" value="1">
+        <input type="button" value="2">
+        <input type="button" value="3">
+        <input type="button" value="+">
+        <input type="button" value=".">
+        <input type="button" value="0">
+        <input type="button" value="-">
+        <input type="button" value="=">
+      </div>
+    </div>
+    <script src="./03-网页计算器.js"></script>
+</body>
+</html>
