@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>while语句</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: #f00;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button id="bn0">0</button>
+    <button id="bn1">1</button>
+    <button id="bn2">2</button>
+    <button id="bn3">3</button>
+    <button id="bn4">4</button>
+    <button id="bn5">5</button>
+    <button id="bn6">6</button>
+    <script>
+        var i=0;
+        while (i<=6){
+            var bn=document.getElementById("bn"+i);
+            bn.onclick=function(){
+                console.log(this)
+            };
+            i++;
+        }
+    </script> -->
+
+    <div id="div0"></div>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+    <div id="div5"></div>
+    <div id="div6"></div>
+    <div id="div7"></div>
+    <div id="div8"></div>
+    <div id="div9"></div>
+    <script>
+        var i=0;
+        while(i<10){
+            var div=document.getElementById("div"+i);
+            div.style.left=i*100+"px";
+            i++;
+        }
+    </script>
+</body>
+</html>

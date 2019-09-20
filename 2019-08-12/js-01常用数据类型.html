@@ -7,47 +7,63 @@
     <title>js类型</title>
 </head>
 <body>
-    js基本类型定义
-      javascript的基本数据类型可以理解为就是我们学习英文或者中文语言的26个英文字母或者拼音。
-    javascript类型分为引用类型和基本类型  区别在于
-      .  基本类型存储的是值
-      .  应用类型存储的是地址
+    <script>
+    // js基本类型定义
+    //   javascript的基本数据类型可以理解为就是我们学习英文或者中文语言的26个英文字母或者拼音。
+    // javascript类型分为引用类型和基本类型  区别在于
+    //   .  基本类型存储的是值
+    //   .  应用类型存储的是地址
     
-    常用的数据类型
-      .  boolean
-      .  null
-      .  number
-      .  string
-      .  underfined
-      .  NaN
+    // 常用的数据类型
+    //   .  boolean
+    //   .  null
+    //   .  number
+    //   .  string
+    //   .  underfined
+    //   .  NaN
 
-    应用类型
-      .  Object
-      .  Array
+    // 应用类型
+    //   .  Object
+    //   .  Array
 
-    类型判断
-      .  基本类型可以使用typeof来进行判断打印
-      .  引用类型可以使用instanceof 或者Object.protype.tostring来判断
+    // 类型判断
+    //   .  基本类型可以使用typeof来进行判断打印
+    //   .  引用类型可以使用instanceof 或者Object.protype.tostring来判断
 
-    基本类型例子
-      typeof true  或者  typeof false  ==>  "boolean"
-      typeof 123  ==>  "number"
-      typeof underfined  ==>  "underfined"
-      typeof "hello word"  ==>  "string"
-      typeof NaN  ==>  "number"
-      typeof null  ==>  "object"
-      function test (){}  ==>  typeof test  ==>  "function" 
+    // 基本类型例子
+    //   typeof true  或者  typeof false  ==>  "boolean"
+    //   typeof 123  ==>  "number"  任意数字都是NaN
+    //   typeof underfined  ==>  "underfined"
+    //   typeof "hello word"  ==>  "string"   任意字符串都是string
+    //   typeof NaN  ==>  "number"
+    //   typeof null  ==>  "object"   任意内置对象（非函数）---object 
+    //   function test (){}  ==>  typeof test  ==>  "function"  任意函数--function
       
       
-      NaN  underfined  null  出现场景
-        . . .把字符串转为number类型  得到的结果NaN
-        parseInt('')  =>  NaN
+    //   NaN  underfined  null  出现场景
+    //     . . .把字符串转为number类型  得到的结果NaN
+    //     parseInt('')  =>  NaN
 
-        定义一个函数  没有赋值  打印结果
-        var name;  ==> underfined
+    //     定义一个函数  没有赋值  打印结果
+    //     var name;  ==> underfined
 
-        定义了一个对象  访问原型_ _proto
-        var obj  =  {}
-        obj.__proto__.proto__  =>  null
+    //     定义了一个对象  访问原型_ _proto
+    //     var obj  =  {}
+    //     obj.__proto__.proto__  =>  null
+
+
+
+    // var x;    // x为undefined
+    // var x = 5;  //现在x为数字
+    // var x = "John"; // x现在为字符串
+
+    // var carname = "Volvo XC60";
+    // var carname = 'Volvo XC60';
+
+
+    var carname1 = "volvo xc60";
+    var carname2 = "volvo xc60";
+    var answear1 = 
+      </script>
 </body>
 </html>
