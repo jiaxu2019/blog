@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>do while循环</title>
+</head>
+<body>
+    <script>
+        var i=0;
+        var sum=0;
+        while(i<=100){
+            sum+=i;
+            i++;
+        }
+        console.log(sum);
+
+        var j=0;
+        var sums=0;
+        do{
+            sums+=j;
+            j++;
+        }while(j<=100);
+        console.log(sums);
+        /* 上面两种循环的区别
+         do{}while();循环，先执行do的内容块，然后才去判断条件
+         如果条件满足时继续循环，不满足就不再循环啦（跳出循环）
+        */
+
+        /*while()循环是先判断条件才去执行语句块的*/
+        var i=102;
+        while(i<=100){
+            console.log("aa");
+            i++;
+        }
+        var i=102;
+        do{
+            console.log("aa");  // aa
+            i++;
+        }while(i<=100);
+    </script>
+</body>
+</html>
