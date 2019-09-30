@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数基础</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px solid #f00555;
+            width: 100px;
+            height: 30px;
+        }
+        div{
+            width: 1000px;
+            height: 30px;
+            background-color: #ddd;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /*
+        函数定义有三种
+        1.function 函数名(参数名1......){
+            语句块
+        }
+        */
+        function createTable(){
+            for(j=0;j<3;j++){
+            var str="<table>";
+            str+="<tr>";
+            for(var i=0;i<10;i++){
+                str+="<td></td>";
+            }
+            str+="</tr>";
+            str+="</table>";
+            document.write(str);
+        }
+        }
+        createTable();
+        document.write("hr");
+        createTable();
+        document.write("<br>");
+        createTable();
+        document.write("<div>ddd</div>");
+        createTable();
+        document.write("<p>dodd</p>");
+        /*fn1();和fn2();区别
+        var fn1=function(){}匿名函数 将匿名函数赋值给变量 执行变量函数就是执行这个匿名函数。匿名函数不能定义该函数之前执行调用
+        function fn2(){}普通函数，可以在定义之前调用函数执行
+
+        js是解释性语言，在当前<script>标签代码执行的开始阶段，就会将普通函数放入放入在堆中，只是放入堆中
+        但是函数中的内容并没有解析执行，每进行一次函数执行就会解析一次
+        */
+        fn2();
+        var fn1=function(){
+            console.log("aaaa");
+        };
+        function fn2(){
+            console.log("bbb");
+        }
+        
+    </script>
+</body>
+
