@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            *{
+                margin:0;
+                padding: 0;
+            }
+            body{
+                padding: 50px;
+            }
+            div{
+            	outline: 0;
+            	
+            }
+            img{
+            	width:280px;
+            	height: 130px;
+            	margin: 0 auto;
+            	margin-top: 150px;
+            	display: block;
+            }
+            .search{
+            	width:650px;
+            	height: 350px;
+            	margin: 20px auto;
+            }
+            input{
+            	width:500px;
+            	height: 36px;
+    			line-height: 22px;
+    			margin: 6px 0 0 7px;
+    			padding: 0 7px;
+    			background: transparent;
+    			border: 1px solid rgb(204,204,204);
+    			outline: 0;
+    			-webkit-appearance: none;
+    			
+            }
+            button{
+            	width: 100px;
+            	height: 36px;
+            	background: rgb(51,133,255);
+            	color: white;
+            	border: 0;
+    			outline: 0;
+    			cursor: pointer;
+            }
+            #ul1{
+                width: 514px;
+                border: 1px solid rgb(204,204,204);
+                display: none;
+                margin-left:7px ;
+            }
+            #ul2{
+                width: 514px;
+                display: none;
+                border: 1px solid rgb(204,204,204);
+                margin-left:7px ;
+                border-top: none;
+                overflow: hidden;
+            }
+            li span{
+            	float: right;
+            	margin-right:5px ;
+            	text-decoration: underline;
+            	cursor: pointer;
+            }
+            li{	
+            	text-indent: 8px;
+                list-style: none;
+                font: 14px arial;
+                line-height: 25px;
+            }
+            li a:link,li a:visited{
+            	text-decoration: none;
+            	    width: 514px;
+				    color: #000;
+				    font: 14px arial;
+				    line-height: 25px;
+				    display: block;
+            }
+            li a:hover{
+               background: #999;
+
+            }
+            
+        </style>
+    </head>
+
+    <body>
+    	<img src="./37282bb1306fa81bd73ea0a931f42189_u=2246271396,3843662332&fm=85&app=79&f=JPG_w=121&h=75&s=39C718720E8EBE011B398BAC0300F024.jpg">
+        
+        <div  class="search" hidefocus="true" tabindex="0" onmouseleave="keyTipsHidde()" onblur="keyTipsHidde()">
+        	<input type="text" id="q" onkeydown="keyEnter()"  onclick="keyTips()"  onchange="keyTips()" maxlength = "255"/>
+        	<button onclick="toSearch()">百度一下</button>
+        	<ul id="ul1"></ul>
+        	<ul id="ul2"></ul>
+        </div>
+        
+        <script type="text/javascript">
+        		
+        		var oQ=document.getElementById('q')
+                var oUl=document.getElementById('ul1')
+                var oUl2=document.getElementById('ul2')
+                var khtml="<li>最近搜索：<span onclick='listClear()'>清除历史</span></li>";
+                var arr=[];
+                arr=JSON.parse(localStorage.getItem('list'));
+                oUl2.innerHTML=khtml;
+                oQ.value='';
+            	function baidudata(data){ //回调函数
+                var html='';
+                if(data.s.length){
+                    oUl.style.display = 'block';
+                    for(var i=0;i<data.s.length;i++){
+                        html+='<li><a href="https://www.baidu.com/s?&wd='+data.s[i]+'">'+data.s[i]+'</a></li>'
+                    }
+                    oUl.innerHTML=html;
+                }else{
+                    oUl.style.display='none'
+                }
+            }
+            window.onload=function(){ 
+            	var list=JSON.parse(localStorage.getItem('list'));
+            	 for(var i=0;i<list.length;i++){
+            	 khtml+='<li><a href="https://www.baidu.com/s?&wd='+list[i]+'">'+list[i]+'</a></li>'
+            	 }
+            	 oUl2.innerHTML=khtml;
+                
+                oQ.onkeyup=function(){ //键入内容过程 内容提示
+                    if(this.value !=""){
+                    	oUl2.style.display='none'
+                        var oScript=document.createElement('script')    
+                        oScript.src='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/?wd='+this.value+'&cb=baidudata'
+                        document.body.appendChild(oScript)
+                    }else{
+                        oUl.style.display='none'
+                        oUl2.style.display='block'
+                    }
+                }
+            }
+            function toSearch(){//点击百度一下 执行跳转
+            	
+            	arr.unshift(oQ.value);
+            	if(arr.length>5){
+            		arr.pop(oQ.value);
+            	}
+            	window.localStorage.setItem('list',JSON.stringify(arr));
+            	 window.location.href = 'https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd='+oQ.value+'&oq=js%25E6%2596%25B9%25E6%25B3%2595%25E5%25A3%25B0%25E6%2598%258E&rsv_pq=cb1725920003d02e&rsv_t=69bfZqgNEF5hTnxnZ0HyJ9JEygSKw3A96DZpP0RrfPsrNfexCS3yn2gViUw&rqlang=cn&rsv_enter=1&inputT=8477&rsv_sug3=79&rsv_sug1=61&rsv_sug7=101&bs=js%E6%96%B9%E6%B3%95%E5%A3%B0%E6%98%8E';
+            }
+            function keyEnter(){//按下enter键，执行跳转事件 回车键的键值为13
+            	
+			if(event.keyCode==13){
+				arr.unshift(oQ.value);
+				if(arr.length>5){
+            		arr.pop(oQ.value);
+            	}
+				window.localStorage.setItem('list',JSON.stringify(arr));
+             window.location.href = 'https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd='+oQ.value+'&oq=js%25E6%2596%25B9%25E6%25B3%2595%25E5%25A3%25B0%25E6%2598%258E&rsv_pq=cb1725920003d02e&rsv_t=69bfZqgNEF5hTnxnZ0HyJ9JEygSKw3A96DZpP0RrfPsrNfexCS3yn2gViUw&rqlang=cn&rsv_enter=1&inputT=8477&rsv_sug3=79&rsv_sug1=61&rsv_sug7=101&bs=js%E6%96%B9%E6%B3%95%E5%A3%B0%E6%98%8E';
+			}
+			}
+            function keyTips(){//历史记录提示
+            	if(oQ.value==''){
+            	oUl2.style.display='block'
+            	
+            	}else{
+            		oUl2.style.display='none'
+            	}
+            }
+            function keyTipsHidde(){//历史记录框隐藏
+            	oUl2.style.display='none';
+            }
+            
+            function listClear(){//清除历史记录
+            	arr=[];
+            	window.localStorage.setItem('list',JSON.stringify(arr));
+            	 var khtml="<li>最近搜索：<span onclick='listClear()'>清除历史</span></li><li>近期无搜索记录</li>";
+            	 oUl2.innerHTML=khtml;
+            }
+        </script>
+    </body>
+</html>
