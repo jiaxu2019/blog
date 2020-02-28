@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数</title>
+</head>
+<body>
+    <script>
+       // 函数的关键字：function
+       function add(){
+       // 函数体
+           console.log("my first function");
+       }
+       // 函数的调用语句
+       add();
+
+    //    demo1:
+    //    带参数的函数 定义一个函数，实现求两个数的乘积
+    function mult(a,b) {
+        a * b;
+        console.log(a*b);
+        return a * b;    //把a和b的相乘=结果返回到函数调用者的地方。
+    }
+    var t=mult(35,2);   // 执行mult函数，给函数体传递两个35，2两个参数。
+    console.log('t='+t);
+
+
+    //函数的调用
+    //functionName();
+    //函数定义可以放在函数调用之前之后都可以
+    //JavaScript函数声明的提升 引擎先解析 代码 在执行比较牛皮的东西
+
+    // 函数的封装
+    // 计算1到n的和，可能用到很多次，每一次都要重复写吗
+    function sum(n){
+        //实现1到n的计算
+        if( typeof(n)!=='number'){
+            //0==0 "0"==0 'ssss' !=0....如果用户传递的不是数字类型，返回NaN 如果用户传来的数据不是大于1的数字，返回0
+            return 非数字(NaN);
+        }
+        if(  n<1 ){
+            return 0;
+        }
+        // 大于1的情况下
+        var i=1,sum=0;
+        while( i<=n ){
+            sum +=i;
+            i++;
+        }
+        return sum;// 把计算的和返回。
+        } 
+        var C=sum(7);
+        console.log(C);
+
+        // 拓展
+        function sum(a,b){//其中a和b叫形参
+            return a+b;
+        }
+        var c=sum(3,4) // 3和4叫实参
+        // 形参和实参匹配传递
+        // 形参就是函数定义的参数。
+        // 实参就是函数执行传递的参数
+        // 形参和实参个数不匹配的时候
+        // 优先从左向右进行匹配
+        // 实参个数可以少于形参，也可以多于形参
+        // 所有的参数都会放到argumments
+
+        // 函数的小练习
+        function getWeekName(n){
+            // 第一步判断n的数据类型
+            if( typeof(n)!="number" || n>7 || n<1){
+                return "不是正常的日期格式";
+            }
+            var t="";
+            //第二步根据n的值返回对应的星期
+            switch(n){
+                case 1:
+                t = "星期一";
+                break;
+
+                case 2:
+                t = "星期二";
+                break;
+
+                case 3:
+                t = "星期三";
+                break;
+
+                case 4:
+                t = "星期四";
+                break;
+
+                case 5:
+                t = "星期五";
+                break;
+
+                case 6:
+                t = "星期六";
+                break;
+
+                default :
+                t = "星期天";
+            }
+            return t;
+        }
+        // console.log(getWeekName(1));        
+        // console.log(getWeekName(99));
+        // console.log(getWeekName("dd"));
+        // 小技巧 全选缩进alt+shift+花括号 加右边的花括号alt加鼠标左键
+
+        // 匿名函数
+        var f = function(a){
+            return a*a;
+        };
+
+        // 因为我们用var 声明的一个变量f，f的类型是function
+        // f变量跟其他变量一样使用，可以作为其他函数的参数使用。
+        console.log(typeof f);
+        console.log(f(3));
+
+        //函数的声明
+        function f2(a) {
+            return a*a;
+        }
+
+        console.log(typeof f2);
+        console.log(f2(9));
+        //变量声明函数匿名函数 ，不能进行函数的提升
+    </script>
+</body>
+</html>

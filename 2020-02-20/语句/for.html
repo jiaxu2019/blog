@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for</title>
+</head>
+<body>
+    <script>
+        //includes indexOf findIndex
+        // function test(arr = [],field = []){
+        //     var newArr = [];
+        //     for(var i = 0; i < arr.length; i++){
+        //         var value = arr[i];
+        //         if(!field.includes(value)){
+        //             newArr.push(value);
+        //         }
+        //     }
+        //     return newArr;
+        // }
+        // var arr = [1,2,3,4,5,10,100];
+        // var result = test(arr,[5,10]);
+        // console.log(result)
+
+        // function test(arr = [],field = []){
+        //     for(var i = 0; i < arr.length; i++){
+        //         var value = arr[i];
+        //         if(field.includes(value)){
+        //             arr.splice(i,1);
+        //         }
+        //     }
+        //     return arr;
+        // }
+        // var arr = [1,2,3,4,5,10,1090];
+        // var result = test(arr,[5,1,10]);
+
+        // function test(arr = [],field = []){
+        //   return arr.filter(function(it){
+        //     return !(field.findIndex(function(ch){
+        //         return it.id === ch
+        //     }) > -1) 
+        //    })
+        // }
+
+        // var arr = [{
+        //     name:'11',
+        //     age:211,
+        //     sex:311,
+        //     id:1
+        // },
+        // {
+        //     name:13,
+        //     age:22,
+        //     sex:322,
+        //     id:2
+        // },
+        // {
+        //     name:133,
+        //     age:112,
+        //     sex:223,
+        //     id:3
+        // },
+        // {
+        //     name:'11',
+        //     age:211,
+        //     sex:311,
+        //     id:11
+        // },
+        // {
+        //     name:13,
+        //     age:22,
+        //     sex:322,
+        //     id:21
+        // },
+        // {
+        //     name:133,
+        //     age:112,
+        //     sex:223,
+        //     id:32
+        // }];
+
+        // var result = test(arr,[2,3]);
+        // console.log(result);
+
+         var arr = [{
+            name:'11',
+            age:211,
+            sex:311,
+            id:1
+        },
+        {
+            name:13,
+            age:22,
+            sex:322,
+            id:2
+        },
+        {
+            name:133,
+            age:112,
+            sex:223,
+            id:3
+        },
+        {
+            name:'11',
+            age:211,
+            sex:311,
+            id:11
+        },
+        {
+            name:13,
+            age:22,
+            sex:322,
+            id:21
+        },
+        {
+            name:133,
+            age:112,
+            sex:223,
+            id:32
+        }];
+
+        function test(){
+            var str = '';
+            arr.forEach(function(it,idx,arr){
+                str += `
+                  <div>id:${it.id}---name:${it.name}---age:${it.age}</div>
+                `
+            })
+            document.body.innerHTML = str;
+        }
+        test();
+    </script>
+</body>
+</html>

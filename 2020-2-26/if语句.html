@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>语句</title>
+    <title>if语句和if语句的嵌套</title>
 </head>
 <body>
     ffff 
@@ -38,6 +38,58 @@
         //    if(!a){
         //        console.log(a);
         //    }    //  即使if语句只有一行代码，也要写上花括号。
+
+        //  demo1：
+        //  如果变量a是数字类型，那么判断是否大于9，如果大于9则输出9，否则输出非法类型
+        var a=7;
+        if(typeof(a)==="number"){
+            if(a>9){
+                console.log('大于9');
+            } else {
+                console.log('非法类型');
+            }
+        }
+
+        //  demo2:
+        var a,b;
+        a=Math.random()*10;
+        b=Math.random()*10;
+        if(  a>b ){
+            console.log(a);
+        } else if(  a==b ){
+            console.log("相等");
+        } else{
+            console.log("我最帅");
+        }
+
+        //  demo3:
+        //  给定一个数值变量(1~7之间) 如果是6，7则输出周末，否则输出工作日。
+        var a=7;
+        if(  a==6 || a==7){
+            console.log("周末");
+        } else {
+            console.log("今天是工作日")
+        }
+
+
+        //  demo4:判断用户名是否为空
+        // var userName=null;  //  undefined ''  '字符串' null
+        var userName=undefined;
+
+
+        //   null==undefined ==>true
+        if(  userName==null  || userName.length ==0 ){
+            console.log('空');
+        }
+
+        //  demo5:判断一个变量是不是字符串，如果是字符串将字符串转为数值类型并返回结果，否则直接吧变量转成boolean类型输出结果。
+        var t = 'ddd';
+        if(  typeof(t) === "string" ) {
+            console.log(Number(t));
+        } else {
+            // console.log(Boolean(t));  下面的方式也可以
+            console.log(!!t)
+        }
        </script>
     
 </body>
