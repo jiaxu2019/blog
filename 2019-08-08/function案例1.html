@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数案例总结</title>
+</head>
+<body>
+    <!-- JavaScript 函数语法
+    JavaScript 函数通过 function 关键词进行定义，其后是函数名和括号 ()。
+
+    函数名可包含字母、数字、下划线和美元符号（规则与变量名相同）。
+    圆括号可包括由逗号分隔的参数： -->
+    <!-- 函数调用
+    函数中的代码将在其他代码调用该函数时执行：
+
+    当事件发生时（当用户点击按钮时）
+    当 JavaScript 代码调用时
+    自动的（自调用） -->
+
+<!-- 
+    函数返回
+    当 JavaScript 到达 return 语句，函数将停止执行。
+
+    如果函数被某条语句调用，JavaScript 将在调用语句之后“返回”执行代码。
+
+    函数通常会计算出返回值。这个返回值会返回给调用者： -->
+    实例1
+    计算两个数的乘积，并返回结果：
+    dddd 
+    <script>
+    var x=myFunction(3,5);  //调用函数，返回值被赋值给x
+    function myFunction(a,b){
+        return a * b;           //函数返回a和b的乘积
+    }
+    console.log(x);   // 15
+    document.write(x+"<br>");   // 换行稍等下去解决
+    console.log(myFunction);  //打印myFunction函数
+
+
+    //一般形式的函数调用
+    //在默认状态下，函数是不会被执行的使用小括号()可以激活并执行函数。在小括号中可以包含零个或多个参数，参数之间通过逗号进行分隔。
+    // 案例1
+    // 在下面示例中，使用小括号调用函数，然后直接把返回值传入函数，进行第二次运算，这样可以节省两个临时变量。
+    function f(x,y){
+        return x*y;
+    }
+    console.log(f(f(5,6),f(8,9)))  //返回2160 重复调用函数
+
+    // 实例2
+    // 如果函数返回值为一个函数，则在函数调用时可以使用多个小括号反复调用。
+    // function f(x,y){  //定义函数
+    //     return function(){   返回函数类型的数据
+    //         return x*y; 
+    //     }
+    // }
+    // console.log(f(7,8) ());//返回56，反复调用函数
+
+    // 实例3
+    //设计递归调用函数，即在函数内调用自身，这样可以反复调用，但始终返回的都是函数自身
+    // function f(){
+    //     return f;
+    // }
+    // console.log(f() () () ());  //返回函数自身
+    // 总结 当然上述方法在实际开发中没有任何应用价值，不建议使用。
+    
+    // 作为对象的方法调用
+    // 当一个函数被设置为对象的属性值时，称之为方法。使用点语法可以调用一个方法。
+    // 实例
+    // 下面示例创建一个obj对象，他有一个value属性和一个increment属性。increment方法接收一个可选参数，如果该参数不是数字，那么就默认使用数字1。
+    // var obj={
+    //     value:0,
+    //     increment:function(inc){
+    //         this.value += typeof inc ==="number" ? inc:1;
+    //     }
+    // }
+    // obj.increment();
+    // console.log(obj.value);//1
+    // obj.increment(1);
+    // console.log(obj.value);//2
+    //   使用点语法可以调用对象Obj的方法increment，然后通过increment方法改写value属性的值。在increment方法改写value属性值。
+    // 使用call和apply动态调用
+    // call 和 apply 是 Function 的原型方法，它们能够将特定函数当做一个方法绑定到指定对象上，并进行调用。具体用法如下：
+    // function.call(thisobj,args...)
+    // function.apply(thisobj,[args])
+    // function 表示要调用的函数；参数 thisobj 表示绑定对象，即 this 指代的对象；参数 args 表示要传递给被调用函数的参数。call 方法可以接收多个参数列表，而 apply 只能接收一个数组或者伪类数组，数组元素将作为参数列表传递给被调用的函数。
+    // 示例1
+    // 下示例使用call动态调用函数f，并传入参数值3和4，返回运算值。
+    function f(x,y){  //定义求和函数
+        return x+y;
+    }
+    console.log(f.call(null,3,4))  //返回7
+    //分析：上面示例中，f是一个简单的求和函数，通过call方法把函数f绑定到空对象null身上，以实现动态调用函数f,同时把参数3和4传递给函数f，返回值为67，实际上f.call(null,3,4)等价于null.m(3,4)
+    
+    // 示例2
+    // 上面示例使用call调用，实际上也可以使用apply方法来调用函数f。
+    function fun(x,y){  //定义求和函数
+        return x+y;
+    }
+    console.log(fun.apply(null,[3,4]));  //返回7
+
+
+
+
+    // 如果把一个数组或伪类数组的所有元素作为参数进行传递，使用apply方法就非常便利。
+
+    function Person(name,age){
+    // 定义一个人类
+        this.name=name;
+        this.age=age;
+    }
+    // 创建一个学生类
+    function Student(name,age,grade){
+        Person.apply(this,arguments);
+        this.grade=grade;
+    }
+    // 创建一个学生类
+    var student=new Student("zhangsan",22,"一年级") ;
+    // 测试
+    alert("name:"+student.name+"\n"+"age:"+student.age+"\n"+"grade:"+student.grade);
+    console.log(student);
+    // 测试结果 name:zhangsan age:21 grade:一年级
+    // 学生类里面我没有给name和age属性值啊，为什么又存在这两个属性的值呢，这就是apply的神奇之处。
+    // 分析一下哦 Person.apply(this,arguments);
+    // this:在创建对象在这个时候代表的是student
+    // arguments:是一个数组，也就是["zhangsan""21","一年级"];
+    // 也就是通俗一点讲就是:用student去执行Person这个类里面的内容，在Person这个类里面存在this.name等之类的语句，这样就将属性创建到了student对象里面
+
+
+    //  call示例
+    //  在Student函数里面可以将apply中修改成如下:
+    //  Person.call(this,name,age);
+    //  这样子就ok啦
+     function Person(name,age){
+         this.name=name;
+         this.age=age;
+     }
+    function Student(name,age,grade){
+        Person.call(this,name,age);
+        this.grade=grade;
+    }
+    var student=new Student("zhangsan",22,"一年级");
+    console.log(student);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
