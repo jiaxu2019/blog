@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    <script>
+        // 对象Object是JavaScript中一组属性和方法的无序集。
+        // 对象一般是针对一功能载体的描述，比如狗狗  猫猫对象。狗对象常见age name color type 属性，还有奔跑run()等行为。
+        // JavaScript中的对象是动态的，可以随时添加属性和删除属性
+        // 除了字符串，数值类型 布尔类型 null undefined之外的都是对象类型
+        // 对象是引用类型
+        // Object对象的创建方式
+        // Object类型是我们用的最多的引用类型,我们接触到的大部分都是Object类型的实例
+        // 创建Object类型实例的方法:
+        // 第一种:new运算符创建对象
+        var a= new Object();// new  运算符,创建一个object对象.
+                                    //  new:会创建一个对象,然后对象执行object函数,最后返回一个对象实例
+                                    //  js是一个动态语言,可以随时添加属性和方法
+        a.age =18;
+        a.name="itcast";
+        a.run = function (){  //匿名函数
+            console.log("我奔跑啦");
+        }
+        console.log(a.age);
+        console.log(a['name']);
+
+        //  创建对象的第二种方式:字面量的方式
+        //  也成为使用JOSN对象的方式
+        var t = {    // 创建一个对象
+            age:19,
+            name:'初夏',
+            sex:'man',
+            run: function(){
+                console.log('初夏在努力');
+            }
+        };
+        t.run();  // 执行t对象中的run方法,如果一个对象的属性是函数,我们就称为方法.
+
+        console.log(t.age);
+        console.log(t.run);
+        t.age = 10;
+        console.log(t.age);
+        //对象怎么使用自己的属性和方法?
+        //第一种方式:使用点的方式
+        // console.log(b.age);
+
+        //第二种方式:使用中括号的方式
+        // console.log(b['name']);
+
+        // JavaScript的对象非常灵活,可以随时添加新的属性和方法
+        // t.age=20;  he  t['age']=19; 可以达到相同效果
+        // t.show=function(){};
+        // 对象属性的读写
+        // t.age = 19; //等同于t['age'] = 19;
+        // console.log(t.age);  // t['age']也可以读取属性值
+        // 对象方法的执行调用
+        // t.show();
+        // 重复定义的属性和方法会被后面的覆盖
+
+
+        // 对象封装的练习
+        // 封装一个猫对象.猫拥有颜色 重量 名字 id等属性,还拥有跑,叫等行为.并调用猫猫的跑方法.
+        var cat = new Object();
+        var cat = {
+            color:"yellow",
+            weight:30,
+            name:"kimi",
+            ID:1123,
+            run: function(){
+                console.log(this.name + '会奔跑了');
+            },
+            jump: function(){
+
+            }
+        };
+        cat.run();
+
+        // 输出猫所有的自定义属性的名称
+        for (var k in cat){
+            console.log(k);
+        }
+
+
+        var myMath = {
+            PI: 3.1415926,
+            sum: function(n){
+                var result = 0;
+                // 实现1~n的和
+                for(var i=1; i<=n; i++){
+                    result +=i;
+                }
+                return result;
+            },
+            factorial: function(n) {
+                // 1~n的阶乘
+                var result = 1;
+                for(var i = 1;i<=n;i++){
+                    result *=i;
+                }
+                return result;
+            }
+        };
+        console.log(myMath.PI);
+        console.log(myMath.sum(200));
+        console.log(myMath.factorial(15));
+    </script>
+</body>
+</html>
