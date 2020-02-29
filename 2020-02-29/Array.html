@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组Array</title>
+</head>
+<body>
+    <script>
+        // Array类型
+        // 数组对象的作用是:使用单独的变量名类存储一系列的值.
+        // 数组就是一堆数据的分组或者集合.
+        // 数组的对象是Array,也是非常常用的引用类型
+        // 例如:[1,3,'sss',777
+        // Object,Array
+
+        // 创建数组
+        // 第一种，使用new操作符创建数组对象
+        // var arr = new Array();
+        // arr[0] = 19;  //数组的索引从0开始
+        // arr[1] = "www";
+        // arr[2] = "sssss";
+
+        // 数组中可以存储任何数据类型的数据(其他语言中数组的类型一旦确定只能存储特定类型的数据)
+        // 通过的索引是0开始!
+        // JavaScript中的数字的容量可以动态改变
+        // 数组的容量最大为:4294967295个(2de32次方减1)
+        // 求幂运算符:**(补充)
+
+        // 创建数组
+        var arr = new Array();
+        arr[0] = 1;
+        arr[1] = 2;
+        arr[2] = 3;
+        console.log(arr);
+        console.log("length =" + arr.length);
+        // console.log(arr.toString());
+
+
+
+        // 构造函数创建数组
+        // 数组的构造函数可以传递数组的容量的参数
+        // var arr = new Array();// 创建一个空数组
+        // var arr = new Array(3);// 定义数组的容量为3个
+        // var arr = new Array("a","b","c"); //定义一个数字，有a,b,c三个字符串
+        // 数组的长度可以通过length数组来获取。
+        // length是可读和可进行设置，可以对数组进行截断操作。
+        var arr2 = new Array(7);   // 给构造函数传递数值类型，那么他认为是创建容量为数值的数组  作用不大
+        arr2[0] = 'sssss';
+        arr2[1] = 1;
+        arr2[2] = 1;
+        arr2[3] = 1;
+        arr2[4] = 1;
+        arr2[5] = 3;
+        console.log(arr2);
+
+
+        var arr3 = new Array(1,2,3,'sssd','ccccc',true,[44,33]);
+        console.log(arr3);
+
+        // 如果减小length值，就相当于截断了数组。
+        arr3.length = 2;
+        console.log(arr3);
+
+        // 创建数组
+        // 第二种方式 数组字面量创建数组
+        // var arr = [];//创建一个空数组
+        // var arr = [1,2,3];//创建三个数字的数组
+        // var arr = [1,,2];//中间的省略的是undefined
+        // var arr = [1,"dd",true,[1,3],{age:19},33];
+        // 数组元素的类型可以是任意类型
+
+        var a1 = [];  // 创建空数组
+        // 创建一个复杂数组
+        var a2 = [1,2,'sss',true,{age:222},null,undefined];
+        console.log(a2);
+        console.log(a2.toString());
+
+        var a3 = [2, ,3];   //==>[2,undefined,3]
+        console.log(a3);
+        console.log(a3[1]);   // undefined
+
+        //这种方式最多，推荐这么使用。
+        console.log(a3[0]);
+        //   数组的索引都是从0开始
+
+
+
+
+       // 遍历数组   重点！！！！
+    //    length属性，如果是连续数组，那么length就是数组元素的个数
+    //    如果是稀疏数组，那么length不能代表元素的个数
+    //    遍历数组
+    //    for循环方式遍历数组
+    //    for in循环的方式
+    //    数组的索引是从0开始！！！不是从1开始
+
+    //    注意：从原型上继承来的属性也会被for in 遍历，所以如果需要去掉这部分属性可以通过hasOwnProperty( )
+    //    进行过滤。
+    //    demo 一个数组，合法值为1，2或3，其余为不合法，统计合法及不合法的个数
+    var a = [1,2,34,"ee",true]; // length=5
+    console.log('数组a的length = '+ a.length);
+
+    // 输出数组种的所以元素
+    for(var i = 0;i < a.length; i++){
+        console.log(a[i]);
+    }
+
+    // 另外 我们还可以使用for in的方式遍历数据。也可以把继承自原型的属性也进行遍历
+    // for in 遍历对象，拿到的是对象的属性名，而不是属性值。
+    for(var k in a){  // for in 遍历数组k值是数组的索引编号，而不是数组元素。
+        console.log(a[k]);    //k是索引编号不是数组元素值
+    }
+
+    // 拓展 for in里面会有一个bug
+
+
+    // 案例demo:一个数组，合法值为1，2或3，其余为不合法，统计合法不合法个数。
+    var t = [1,3,4,56,222,3,2,2,2,'2','3',3,3,1];
+    var rightfulNum = 0; //  合法的个数
+    var illNum = 0;      //  不合法的个数
+
+    // 遍历数组中的每一个元素，判断是否合法，如果合法给rightfulNum+1
+    // 第一种写法
+    // for (var i=0; i<t.length; i++){
+    //     if(t[i] ===1 || t[i] ===2 || t[i] ===3){
+    //         rightfulNum +=1;
+    //     } else{
+    //         illNum +=1;
+    //     }
+    // }
+    // console.log('合法的个数' + rightfulNum);
+    // console.log('不合法的个数' + illNum);
+
+    // 第二种写法
+    // for(var i=0;i<t.length;i++){
+    //     if(t[i] === 1 || t[i] === 2 || t[i] === 3){
+    //         rightfulNum +=1;
+    //     }
+    // }
+
+    // illNum = t.length-rightfulNum;   // 通过数组的总长度减去合法的剩下的就是非法的。
+    // console.log(rightfulNum);
+    // console.log(illNum);
+
+    // 第三种写法
+    // for(var k in t){
+    //     switch(t[k]){
+    //         case 1:
+    //         rightfulNum +=1;
+    //         break;
+    //         case 2:
+    //         rightfulNum +=1;
+    //         break;
+    //         case 3:
+    //         rightfulNum +=1;
+    //         break;
+    //         default:
+    //           illNum +=1;
+    //     }
+    // }
+    // console.log('合法' + rightfulNum);
+    // console.log('不合法' + illNum);
+
+    // switch优化版本
+    for(var k in t){
+        switch(t[k]){
+            case 1:
+            case 2:
+            case 3:
+            rightfulNum +=1;
+            break;
+            default:
+            illNum +=1;
+        }
+    }
+    console.log('合法' + rightfulNum);
+    console.log('不合法' + illNum);
+
+    // 稀疏数组
+
+    var d =[2,22,34,4];
+    d[100] = 'yaoyao';   // 索引到了101 length = 101
+    console.log(d);
+    console.log(d[10]);  // undefined;
+
+    // for in 循环会越过稀疏数组中的undefined空值
+    for(var k in d){
+        console.log(d[k]);
+    }
+
+    // 1.length和数组的元素的个数不一定相等
+    // 2.数组不一定是连续的
+    // 3.使用for in 循环可以对稀疏数组的空值undefined进行过滤。
+    // 4.这辈子不要用稀疏数组！！！！！！
+    </script>
+    
+</body>
+</html>

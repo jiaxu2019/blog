@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的栈方法</title>
+</head>
+<body>
+    <script>
+        //  ！！！！数组可以通过 push 和pop 两个方法形成栈数据结构  很重要
+        // 1.出栈 pop():从数组尾部弹出一个元素并返回弹出的元素
+                //length就会减1， 尾部：是索引最大的地方
+        var t = ['a','b','c','ddd','fff','g',22];
+        console.log(t.length);
+        console.log(t);
+        t.pop();
+        console.log(t);
+        t.pop();
+        console.log(t);
+        // 2.压栈 push():从数组的尾部压入一个元素，并返回数组的新长度    栈方法可以对比弹夹
+        var r = t.push(3)
+        console.log(r);
+        console.log(t);
+        // 什么是栈呢  栈是一种数据结构，先进后出数组
+    </script>
+</body>
+</html>
