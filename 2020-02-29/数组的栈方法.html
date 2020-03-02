@@ -22,6 +22,249 @@
         console.log(r);
         console.log(t);
         // 什么是栈呢  栈是一种数据结构，先进后出数组
+
+        // shift(); // 可以让数组从数组的！！！头部弹出！！！一个元素，并返回此元素，原数组的length-1
+        // // 队列的特点：从队列的尾部进，从队列的头部出 先进后出。
+        // // 索引为0,就是队列的头部
+        // unshift(); //从数组的 ！！！头部压入！！！一个元素，并返回length
+        // sort();// 转成字符串排序
+        // reverse(); // 对原数组进行逆序
+
+        // 用数组模拟队列数据结构
+        var t = [];
+        // 往队列里放入1，2，3三个元素。
+        t.push(1);
+        t.push(2);
+        t.push(3)
+        console.log(t);
+
+        // 出队一个元素，1
+        console.log(t.shift());  // 1
+        console.log(t);
+
+        // 再出队一个元素，2
+        console.log(t.shift());  //  2
+        console.log(t);
+
+        // 队列的特点就是先进后出  用push 和shift可以模拟队列的数据结构。
+        t.push(111);
+        t.push(222);
+        t.reverse();
+        console.log(t)
+
+        // 对数组进行排序
+        var t = ['1','2','4','5','3'];
+        console.log(t);
+        t.sort();
+        console.log(t);
+        var arr = [33,4,1,11,12,44,55,6,55,4];
+        console.log(arr);
+        arr.sort();
+        console.log(arr);
+
+        // sort方法是按照字符串进行比较大小规则计算排序的。
+        // 如果数组中的元素不是字符串类型就会转成字符串后进行比较。
+
+
+        // 此函数接受两个参数，要求返回值为:负数 ，0 ，正数。如果返回负数代表第一个参数小于第二个参数，0为相等，正数则大于
+        // 定义一个变量，变量的类型是function
+        var compareFun = function (a,b) {
+            return a-b;
+        };
+        var m = [3,44,5,66,22,4,-2,4444,5555,-333];
+        console.log(m);
+
+        // 默认是转成字符串后比较大小。
+        // m.sort(compareFun);
+        // console.log(m)
+        // 利用函数式编程，sort方法可以接收一个比较大小的函数，例如数值比较大小的方法进行排序
+
+
+
+        // 进一步优化 由于匿名函数只用一次，没有必要创建一个变量 直接可以把匿名函数的表达式传递到sort函数里去就行
+        m.sort(function(a,b){
+            return a-b;
+        });
+        console.log(m)
+        
+
+
+
+
+        // 数组的方法-连接方法
+        // concat();
+        // 连接原数组的元素和传递的参数形成一个新数组并返回，不影响原来的数组
+        // 如果传入的参数是数组，会把数组中的元素跟原数组元素进行合并成一新数组
+
+        var d = [2,3,4,'fff'];
+        console.log(d);
+        //调用数组的连接方法,不会影响原来的数组,函数会返回一个新的连接的数组.
+        var newArr = t.concat('ll',33,true,'姚姚');
+        console.log(t);
+        console.log(newArr);
+
+        var newArr2 = t.concat(['ee',33,444]);
+        console.log(newArr2);
+
+
+
+        // join();
+        // 可以把数组的元素(项)连接成字符串,接收一个参数为连接符号,默认是 逗号,返回的结果为字符串
+        var t = [1,2,3,45,4];
+        //  toString方法会把数组转成字符串,重写了原型的方法
+        //  把数组中的元素都转成字符串然后用逗号分隔不同的元素
+        console.log(t.toString());
+
+        // join方法也可以将数组转成字符串,默认跟toString一样.
+        console.log(t.join())
+
+        // join方法可以传一个参数,用来分隔数组中的元素
+        console.log(t.join('-'));
+        console.log(t.join('|'))
+
+
+
+        // !!!!!!数组的方法-获取切片方法
+        // slice();数组切片
+        // 截取数组的一个片段或者子数组
+        // 接收1个到2个参数,参数:截取数组起始索引和结束索引
+        // 如果只指定一个参数代表:索引位置到数组尾部.
+        // 参数如果是负数代表从数组末尾计算索引位置
+        // 此方法只能从数组前面往后面截取,如果第二个参数在第一个参数的前面则返回空数组[];
+        // 此方法对原数组没有影响
+        var t = [0,1,2,3,4,5,6];
+        console.log( 't =' + t);
+        // slice:复制数组的一部分
+        // 传一个参数的时候,是从参数的索引位置开始截取到数组的最后
+        var a1 = t.slice(2);  //从索引位置2开始截取到数组的最后
+        console.log('a1 =' + a1);  // 2,3,4,5,6,
+        
+        //传两个参数:从第一个参数作为作为索引位置开始,到第二个参数作为索引前面的那个元素结束,截取数组切片,对原数组没有任何影响
+        var a2 = t.slice(0,4);  // [0,1,2,3]
+        console.log(a2);
+        console.log(t);  // 原数组没有影响
+
+        // 传递负数 试一下 那么从数组结尾开始计算  但是不要用 slice方法只能往后截取,如果往前面截取返回[];
+        var a3 = t.slice(-3,-1);
+        console.log(a3);  // 4,5
+
+        
+        
+        
+        
+        // 数组的方法-切片方法
+        // splice();方法
+        // 在原数组上进行插入或者删除数组元素,会影响原来数组
+        // 返回的结果是删除的元素组成的数组
+        // 参数:可以接收一个参数,两个参数,或者两个以上的参数
+        // 第一个参数是删除数组的索引位置
+        // 第二个参数是要删除数组元素的个数
+        // 第三个参数开始是要插入到原数组中的元素,插入的位置从第一个参数的索引开始
+        //   mdn developer 很重要的一个网站!!!!!!https://developer.mozilla.org/zh-CN/
+
+        var t = [0,1,2,3,4,5,6];
+        // splice()方法如果只传入一个参数,那么就从这个参数开始删除到数组的结尾
+        // 对原数组有影响
+        // var a1 = t.splice(3);
+        // console.log(t);  //0,1,2
+        // console.log(a1); //3,4,5,6
+
+        // 传两个参数stare end
+        // 第一个参数是要删除的起始索引startt
+        // 第二个参数是要删除的元素个数
+        // var a2 = t.splice(3,4);
+        // console.log(t);  // 0,1,2
+        // console.log(a2); // 3,4,5,6
+
+
+        // 如果传递两个以上的参数
+        // 第一个参数 start
+        // 第二个参数 删除数据的个数
+        // 第三个及后面 的参数 都要插入到start索引位置的元素
+        // var a3 = t.splice(3,3,'yaoyao','nuli');
+        // console.log(a3);
+        // console.log(t);
+
+        // splice的应用,给数组任意位置插入元素
+        // t.splice(3,0,'a');
+        // console.log(t);  // t==>[0,1,2,'a',3,4,5,6]
+
+        //  替换数组中的3,  为'yyy'
+        t.splice(3,1,'yyy');
+        console.log(t);
+
+        // 插入数组的元素
+        // 替换数组中的元素
+
+
+
+        // 数组案例
+        // 数组案例:[1,2,3,4,5,6,5,4,44,33]
+        // 将数组内容进行反序
+        // 求一个数据数组中的最小值及它的索引
+        // 求一个数组中的数据的平均值，最大值，和
+        // 求数组的数据进行排序
+        // 冒泡排序算法
+        // 给定一个数组，请去掉数组中的重复数据
+        // 数组反序的demo
+        var t = [1,2,3,4,5,6,5,4,44,33,'ddd',3322];
+        console.log(t);
+        // t.reverse();
+        // console.log(t);
+
+        // Javascript 的Array数组自动的反序方法
+        // t.reverse();
+        // console.log(t);
+        // 不用reverse()方法,自己使用循环实现逆序
+        // 第二种方法:创建一个新数组，逆序之间存放原数组的数据内容
+        // var arr = new Array(t.length);  !!!!!重点
+        // for (var i =t.length-1 ,k=0 ; i>=0;i--,k++){
+        //      arr[k]=t[i];
+        // }
+        // console.log(arr);
+        // for(var i=0;i<t.length;i++){
+        //     arr[t.length-i-1] =t[i];  // 直接把数组中的数据赋值给 新数组对应位置的元素 
+
+        // }
+        // console.log(arr);
+        // 第三种方法：不增加数组的情况下，直接修改
+        console.log(t)
+        for(var i = 0;i<t.length/2;i++){
+            // t[i] t[t.length-1-i]
+            var temp = t[i];
+            t[i] = t[t.length-1-i];
+            t[t.length-1-i] = temp;
+        }
+        console.log(t)
+
+
+
+
+        //求数组中的最小值及索引
+        var t = [22,3,11,4,66,8,44,45,1];
+        var min,mindex;
+        min = t[0];  // 初始化默认的最小值为第一个值
+        mindex = 0;
+
+        // 循环数组中的每一个值跟默认最小值比较啊
+        for(var i=1;i<t.length;i++){
+           if(t[i] < min){    //解析 默认值为索引为零的值，当min=t[0]=22,for循环从索引为1开始
+                              //                         满足for循环条件判断if是否满足，判断3是否小于22
+            min = t[i]      // 这一步很重要
+            mindex = i;
+           }
+        }
+        console.log(min);
+        console.log(mindex);
+
+        // 求一个数组中的数据的平均值与和
+        var s = [22,3,11,4,66,8,44,45,1];
+        var sum =0;
+        for(var i=0;i<s.length;i++){
+            sum +=t[i];
+        }
+        console.log('和是' + sum);
+        console.log('平均值是' +sum/s.length)
     </script>
 </body>
 </html>
