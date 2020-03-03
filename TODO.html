@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Bootstrap 模板</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- 引入 Bootstrap -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <style>
+          .todo{
+            margin:0 auto;
+            margin-top:50px;
+            width:600px;         
+          }
+          .todo-list{
+              margin-top:20px;
+          }
+          .pointer{
+              cursor: pointer;
+          }
+      </style>
+   </head>
+   <body>
+    <div class="todo">
+        <div class="form-inline">
+            <div class="form-group">
+                <input type="text" id="form-input" class="form-control" id="name" placeholder="请输入名称">
+            </div>
+            <button id="form-add" class="btn btn-default">添加</button>
+            <button id="form-serach" class="btn btn-default">搜索</button>
+        </div>
+        <div class="todo-list">
+            <ul class="list-group" id="form-list">
+              
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var dataList = ['免费 Window 空间托管','图像的数量','每年更新成本'];
+        var formAdd = $('#form-add');
+        var formSearch = $('#form-serach');
+        var formInput = $('#form-input');
+        var formItem = $('.list-group-item');
+        //入口 
+        function init(){
+            showList();
+            addFn();
+            seachFn();
+        }
+
+        //添加
+        function addFn(){
+            formAdd.addEventListener('click',function(){
+                if(!formInput.value){
+                    alert('不能为空');
+                    return;
+                }
+                dataList.push(formInput.value);
+                showList();
+            })
+        }
+
+        //搜索
+        function seachFn(){
+            formSearch.addEventListener('click',function(){
+                var newArr = [];
+                var inValue = formInput.value;
+                dataList.forEach(function(it){
+                    if(it.indexOf(inValue) > -1){
+                        newArr.push(it)
+                    }
+                })
+                showList(newArr);
+            })
+        }
+
+        //删除
+        function removeFn(idx){
+           dataList.splice(idx,1);
+           showList();
+        }
+
+        //渲染列表
+        function showList(newList = []){
+            var str = '';
+            newList = newList.length ? newList : dataList;
+            newList.forEach(function(it,idx){
+                str += `
+                  <li class="list-group-item">${it}
+                  <span style="float:right" onclick="removeFn(${idx})" class="glyphicon glyphicon-trash pointer"></span>
+                </li>
+                `
+            })
+            $('#form-list').innerHTML = str;
+        }
+
+        //获取dom元素
+        function $(el){
+          return document.querySelector(el)
+        }
+
+        init()
+    </script>
+   </body>
+</html>
