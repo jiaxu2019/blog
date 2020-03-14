@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的四种调用模式</title>
+</head>
+<body>
+
+    <button class="btn">按钮</button>
+    <script>
+        //函数的四种调用模式与this
+        //方法调用模式
+        //如果一个函数作为对象的一个方法属性调用，那么它的调用模式就是方法调用模式
+        //eg. var a = {}; a.toString();   方法调用模式 
+        //方法调用模式的this指向调用对象
+
+        //定义一个dog类型的构造函数
+        function dog(dogName){
+            // 如果函数当做构造函数来用
+            // 第一步 创建一个空对象(新对象)，函数上下文===this
+            // 第二步 把空对象赋值给函数的上下文，this=新对象
+            this.name = dogName;
+            this.age = 0;
+
+            this.run = function(){
+                console.log(this.name + 'is running..');
+            };
+
+            // 如果函数当做构造函数调用，并没有返回任何数据的时候，默认就会返回 新对象(this)
+        }
+
+        // 使用构造函数创建一个dog类型的实例
+        var d = new dog('dddd');  // 构造函数的返回值就是默认的新对象this
+
+        // d.run();   // 调用d对象实例的run方法，这就是对象方法的调用模式
+                   // 在方法的调用模式中，方法内部的this指向当前调用者的对象==>d
+                   // this === d //true
+
+
+
+
+
+
+        // 构造器调用模式
+        // 构造器调用模式就是构造函数调用
+        // 构造器模式调用必须有关键字new的存在
+        // 构造器模式调用的this指向创建出来的新对象
+        // var t = new Dog();  // 构造器调用模式
+        // 构造函数可以返回一个值，但是如果是简单类型会被忽略，如果是引用类型会替换掉新创建的对象返回
+        function Cat(){
+            this.age = 19;
+            this.name = 'cat';
+            this.run = function(){
+                console.log(this.name + 'run...');
+            }
+
+            //如果构造函数没有返回值，那么就返回this(新对象)
+            // return 3;  //即使有返回值，如果返回值类型是简单类型，那么就会被忽略
+            // 如果返回值是一个引用类型(去掉null)那么对新对象就会被抛弃，把这个引用类型返回
+            return {
+                name :'kimi',
+                run :function(){
+                    console.log('自己返回的{}')
+                }
+            }
+        }
+
+        var cat = new Cat();//构造函数调用模式
+        // 如果使用new关键字+构造函数执行的话触发了构造函数执行模式。
+
+        cat.age = 20;
+        cat.name = '我会跑';
+        cat.run();  //方法调用模式
+
+        // 方法调用模式
+        // 如果一个函数作为对象的一个方法属性调用，那么它的调用模式就是方法调用模式
+        // var a = {}; a.toString(); // 方法调用模式
+        // 方法调用模式的this指向调用对象
+
+        // 函数调用模式
+        // 如果一个函数直接调用，那么调用者其实就是全局对象：window
+        // 函数调用模式this指向全局对象
+        // 不管在什么地方定义的 直接调用函数都属于这种  如果是严格模式this == undefined
+        // function f(){}; 函数调用模式
+        // 直接上例子
+        // 函数调用模式
+        function f(a,b){
+            console.log(a + '' + b);
+            this.a = 19; // this === window // true
+            console.log('a' in window);
+            console.log(this);  // window,全局对象，严格模式 undefined
+        }
+        f(2,3);    // 直接调用函数： f() 函数调用模式
+
+
+        function dog(){
+            this.age = 19;
+            console.log(this);
+        }
+        dog();  // 函数执行模式 ==> window
+        var d = new dog();   // 构造函数执行模式 =>d对象
+
+
+        // apply/call调用模式(借用方法模式)
+        // apply和call可以改变函数调用的内部this的指向
+        // apply和call功能一样，只不过参数不一样，第一个参数都是改变改变函数内部的this的指向
+        // 第一个参数如果是null，undefined会被全局对象替代，如果是简单类型会被包装类型替代
+        // call第二个参数开始后面的都是传给函数的参数，可以有多个 用逗号隔开，
+        // apply第二个参数都是一个传递函数的参数数组
+        // 调用：function m(a){};  m.call(window,2)  m.apply(window,[2]);
+
+        // call和apply调用模式
+        function sum(a,b){
+            console.log(this);   //  window
+            return a + b;
+        }
+
+        sum(1,2);  // this=>window
+
+        var t = {
+            name:'chuxia'
+        };
+
+        // f.call(fContext,p1,p2.....)
+        var m = sum.call(t,2,3,9,19);
+        console.log(m);   // 5
+
+        var m2 = sum.apply(t,[1,2]);
+        console.log(m2);  // 3
+
+        // 如果你传递的第一个参数是简单类型(值类型 原始类型)，那么会出现一些变化
+        // 如果传递第一个参数是：null undefined=>window
+        // 如果是number string Boolean转成对应的包装类型
+
+        sum.call(null,3,5);
+        sum.call(undefined,3,5);
+        sum.call(3,3,3);
+ 
+
+        // 定义按钮类，要求按钮类的构造函数可以接收参数初始化按钮的宽度 高度 坐标xy
+        function btn(width,height,x,y){
+            this.width = width;
+            this.height = height;
+            this.px = x;
+            this.py = y;
+        }
+        var b = new btn(100,100,20,30);
+        btn();
+
+
+        // 把类数组转成真正的数组
+        var t = {};    // 类数组，跟数组很相似，但不是数组。
+        t[0] = 1;
+        t[1] = true;
+        t[2] = 'chuxia';
+        t.length = 3;
+        
+        // var m = [1,2,3];
+        // m.slice();  如果什么都不传，默认是从0索引开始截取到最后
+        // 第一个参数是：截取开始的位置  startInedx
+        // 第二个参数数：截取结束的位置+1 endIndex
+
+        // 如果我借用数组的slice方法，然后把this指向到t对象，那么slice方法就会返回t对象的对应的数组。
+        var k = Array.prototype.slice.call(t,0);
+        // 通过一个slice方法可以把类数组转成真正的数组
+        console.log(k);
+
+
+        // 判断代码输出的内容
+        // function dog(){
+        //     console.log(this);  window 
+        // } 
+        // dog();                  函数调用模式
+        // var d = new dog();      构造函数调用模式  this == d
+        // dog.call(null);         借用调用模式 window
+        
+
+
+
+
+        // 数组forEach方法
+        var m = ['22',true,1,90,00];
+        m.forEach(function (item,index){
+            console.log('index:' + index + ' ' + item);
+        })
+    </script>
+
+    
+</body>
+</html>

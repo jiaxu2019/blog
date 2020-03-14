@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数参数的值传递和引用传递</title>
+</head>
+<body>
+    <script>
+
+        // 1.函数值类型和引用类型的赋值
+        // 2.函数参数值传递和引用类型传递
+        // 3.函数参数的练习
+        // 4.函数参数的封装
+
+        var a = 9,  // 简单类型，值类型
+            b = { name:'fff',age:20};  // 引用类型
+        
+
+            // 把a/b分别传给c1和c2.
+            // 函数的参数:如果是简单类型会做一个值类型的数值副本传到函数内部。
+            // 如果是一个参数是引用类型，会将引用类型的地址值赋值给传入函数的参数
+        function demo(c1,c2){
+            c1 = 25;  // 对c1做了更改
+            c2.name = '玲玲';  // 更改了c2引用类型的顺序name
+        }
+
+        // 调用函数执行
+        demo(a,b);
+        console.log(a);  // 9
+        console.log(b);  // {name:'玲玲'，age:20}
+
+
+        // 函数的arguments参数详解
+        // 函数的参数
+        // 形参:函数定义的参数
+        // 实参:函数调用时实际传递的参数。
+        // 参数匹配是从左向右进行匹配，如果实参个数少于形参，后面的参数对应赋值undefined。
+        // 实参的个数如果多于形参的个数，可以通过arguments访问。
+        // 案例 模拟封装Math的max方法。
+        // 函数对象的length属性就是函数形参的个数。
+        // 如果参数多于4个，那么开发人员很难记忆，最好将参数封装成对象来接收，对象的属性是无序的，可以方便开发人员使用
+        // 函数参数的值传递和引用传递
+        // 引用传递的参数，是传递引用对象的地址。函数内部修改会影响传递参数的引用对象
+        // 值传递是一个值类型的副本，函数内部不影响函数外部传递的参数变量
+        function max(a,b){
+            // for(var i in arguments)
+            console.log(arguments);
+            // 每个函数内部都可以直接访问arguments，里面就是存放着我们传递给函数的参数
+            // arguments不是一个数组，它的属性:0,1,2......类数组
+            // arguments有一个length属性，属性值就是传递实参数的个数。
+            for(var i = 0;i<arguments.length;i++){
+                console.log(arguments[i]);  // 打印出所有的参数。
+            }
+
+            if( a > b ) {
+                return a;
+            } else {
+                return b;
+            }
+        }
+        console.log(max.length);  // 函数的length属性是指形参的个数
+
+        var m = max(9,10,11,12);
+
+
+        // 实现max方法可以接受任意多个参数，返回这些参数中最大的那个值
+        // 函数在未定义之前就可以直接使用因为声明的函数会提示到代码的顶部。
+        var m = myMax(10,2,3,4,5,33);
+        console.log(m);
+        // 要你实现max方法，可以接收任意多个参数，返回这些参数中最大的那个值
+        function myMax(){
+            // 如果调用函数的地方没有传递参数 直接返回NaN
+            if(arguments.length <= 0){
+                return NaN;    // ruturn语句执行，当前函数立即结束。
+            }
+            var max = arguments[0];
+            // 获取实参：使用arguments,它是一个类数组，length属性是实参的个数
+            for(var i = 1;i<arguments.length;i++){
+                if(arguments[i] > max){
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+    </script>
+</body>
+</html>
