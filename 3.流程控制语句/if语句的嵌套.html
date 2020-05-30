@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流程控制语句</title>
+</head>
+<body>
+    <!-- if语句 -->
+    <script>
+        //  if(condition){
+        //      statement1;
+        //  }
+        // 判断用户有没有成年
+        var age = 25;
+        if(age<18){     // 括号内为真 执行下面代码
+            alert("您还没有成年");
+        } else{
+            alert("您已经成年啦");
+        }
+        // 拓展 prompt();
+        var age = prompt("请输入您的年龄");
+        if(age<18){
+            alert("您还没有成年");
+        } else{
+            alert("您已成年，请提供您的身份证");
+        }
+        if(age<18){
+            alert("您还没有成年");
+        } else if(age>=18 || age<=59){  // && 并且  ； || 或
+            alert("您已成年 可以上网");
+        } else{
+            alert("您已超出年龄");
+        }
+
+        // if语句的嵌套  demo案例 密码的设置
+        var password = prompt("请设置您的密码");
+        // 判断密码的长度
+        if(password.length!=6){
+            alert("请输入6位数的密码");
+        } else {
+            // 判断类型
+            if(isNaN(password)){
+               alert('密码必须是纯数字');
+            } else{
+                alert('密码设置正确');
+            }
+        }
+
+        // demo 面试题
+        var str = "abc123";
+        var num = parseInt(str);
+        // alert(num);
+        // passInt 在对一个字符串换转成整形的时候，如果是以非数字开头的，返回结果NaN  
+        // NaN和任何内容都不想等 ，包括他本身
+
+        if(num == NaN){
+            alert(NaN);
+        } else if(num == 123){
+            alert(123);
+        } else if(typeof num=="number"){
+            alert("num");
+        } else{
+            alert("str");
+        }
+        var password1 = prompt("请输入您的手机号码");
+        if(password1.length!=11){
+           alert("请输入11位的手机号");
+        } else{
+            if(isNaN(password1)){
+                alert("手机号必须是纯数字");
+            } else{
+                alert("号码输入正确")
+            }
+        }
+    </script>
+</body>
+</html>
