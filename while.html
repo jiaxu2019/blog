@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>while语句</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: #f00;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button id="bn0">0</button>
+    <button id="bn1">1</button>
+    <button id="bn2">2</button>
+    <button id="bn3">3</button>
+    <button id="bn4">4</button>
+    <button id="bn5">5</button>
+    <button id="bn6">6</button>
+    <script>
+        var i=0;
+        while (i<=6){
+            var bn=document.getElementById("bn"+i);
+            bn.onclick=function(){
+                console.log(i);
+            };
+            i++;
+        }
+    </script> -->
+     <!-- 循环
+    1.必须要条件初始变量
+    2.必须要进入循环的条件
+    3.必须要有向条件外发展的表达式
+    -->
+
+
+    <div id="div0"></div>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+    <div id="div5"></div>
+    <div id="div6"></div>
+    <div id="div7"></div>
+    <div id="div8"></div>
+    <div id="div9"></div>
+    <script>
+        var i=0;
+        while(i<10){
+            var div=document.getElementById("div"+i);
+            div.style.left=i*100+"px";
+            i++;
+        }
+    </script>
+    <!-- 循环语句是瞬间全部执行完成的，再循环过程中所发生的事情都是瞬间的
+    但是在循环写点点击或者其他的异步方法时，这写操作一定是在循环完成后，才开始的，
+    因此，这里的i将不会是每个bn调用时i值，而是循环完成最后的结果值 -->
+</body>
+</html>
